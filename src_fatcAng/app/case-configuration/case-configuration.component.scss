@@ -1,0 +1,219 @@
+.backgroundRect {
+  margin-top: 0px;
+  padding: 10px;
+  width: 100%;
+  height: 700px;
+}
+h5.textWhite.descriptionText {
+  margin-bottom: 17px;
+}
+.flexboxRow1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.flexRow2 {
+  display: flex;
+  flex-direction: row;
+}
+.flexrow3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.flexCol1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.flexCol2 {
+  display: flex;
+  flex-direction: column;
+}
+.flexCol3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+.collectorSelectBox {
+  width: 150px;
+}
+.buttonHeight {
+  height: 20px;
+}
+
+button.btn.btn-warning.panelButton.btn-xs.newCollectorAddAuth {
+  margin-top: 9px;
+}
+
+.buttonRight {
+  float: right;
+}
+.addCollectorText {
+  padding-top: 35px;
+}
+.tooltip-wrapper {
+  display: inline-block;
+  // while this may seem like it'll always be on,
+  // if button is enabled, it gets pointer events again and eats the cursor
+  cursor: not-allowed;
+}
+
+.authButton[disabled] {
+  pointer-events: none;
+}
+.sharedAuthButtons {
+  margin-top: 15px;
+}
+button.btn.btn-primary.panelButton.btn-xs.sharedAuthButtons.questionbtn {
+  margin-top: 10px;
+}
+
+.collectorRect {
+  padding: 10px;
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  background-color: #3f9dd6;
+  max-height: 525px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.Parallelcollectbuttons {
+  margin-top: 10px;
+  float: right;
+}
+
+.typeSelect {
+  margin-top: 18px;
+  width: 80%;
+}
+
+.selectacolect {
+  margin-top: 30px;
+}
+
+.runCollCls {
+  text-align: center;
+}
+
+.collecAuthen {
+  position: absolute;
+  margin-left: -15px;
+}
+
+.collectorSubRect {
+  padding: 10px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  background-color: darkgrey;
+}
+.spacer {
+  width: 10%;
+}
+.radiosbtns {
+   vertical-align: bottom;
+   font-size: 1.05em;
+}
+.contentbtnprio {
+  margin-top: 40px;
+}
+dl {
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0
+}
+dt {
+  float: left;
+  width: 25%;
+  padding: 0;
+  margin: 0
+}
+dd {
+  float: left;
+  width: 75%;
+  padding: 0;
+  margin: 0
+}
+
+.descriptionText {
+  margin: 0px;
+  padding: 0;
+}
+textarea.form-control.configDescription {
+  width: 100%;
+  // height: 100%;
+  margin-top: -19px;
+  padding: 0;
+  height: 107px;
+  // padding-top: -125px;
+}
+button.btn.btn-warning.panelButton.btn-xs.trashcan {
+  margin-top: 85px;
+}
+
+.aliasclass {
+  display: inline;
+}
+div.col-sm-1.congigcollectorbtns {
+  margin-right: -30px;
+}
+.collectbtnCol {
+  margin-top: -15px;
+}
+
+.collectorButtonsRow {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.acqsummarytbl {
+  max-height: 110px;
+  overflow-y: scroll;
+}
+div.col-sm-1.congigcollectorbtns.selectacolect{
+  margin-top: 10px;
+}
+
+.athentRow {
+  vertical-align: bottom;
+}
+.centerText {
+  text-align: center;
+}
+select.form-control.collectorSelectBox.configTextArea {
+  margin-top: -20px;
+}
+.configTextArea {
+  width: 100%;
+  height: 100%;
+}
+.glyphicon {
+    color: white;
+}
+div.col-sm-3.acqSummary {
+  margin-left: 45px;
+}
+div.col-sm-1.contentbtnprio {
+  margin-left: -25px;
+}
+.contentpriority {
+  overflow-y: scroll;
+  height: 115px;
+}
+h3.textWhite.radio-inline.pull-right {
+  padding-top: 0px;
+  margin-top: -4px;
+}
+
+.radiobtns {
+  margin-top: 10px;
+}

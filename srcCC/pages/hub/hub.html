@@ -1,0 +1,113 @@
+
+<ion-content style="background-color: #3e9dd5">
+
+    <ion-toolbar style="position: fixed;">
+        <a (click)="goHome()"><img src="/assets/imgs/cloudCatcher.png" alt="mockup" style="max-height: 50px; max-width: 100%;"/></a>
+          <ion-list style="float: right; margin-top: 20px;" menuToggle>
+              <button ion-button icon-only class="menuButton" style=" margin-right: 30px;" menuToggle>
+                <ion-icon name="menu" style="color: white; margin-right: 0px;" ></ion-icon>
+              </button>
+          </ion-list>
+        </ion-toolbar>
+
+        <ion-menu [content]="mycontent" side="right" style="position: fixed;">
+            <ion-content style="background-color: #3e9dd5">
+              <ion-list style="margin-top: 10%;" >
+                <button ion-button menuClose style="width: 100%; background-color: #1f3a4d;">
+                    <a  style="color:white;text-decoration: none;">Start New Collection</a>
+                </button>
+                <button ion-button menuClose style="width: 100%; background-color: #1f3a4d;">
+                    <a style="color:white;text-decoration: none;">Profile</a>
+                </button>
+                <button ion-button menuClose style="width: 100%; background-color: #1f3a4d;" (click)="logoutUser()" >
+                    <a style="color:white;text-decoration: none;">Logout</a>
+                </button>
+        </ion-list>
+            </ion-content>
+          </ion-menu>
+        <ion-nav #mycontent ></ion-nav>
+        <ion-menu [content]="mycontent" ></ion-menu>
+
+        <!-- Below will only be displayed on ngIf with a check on log in'ed users account -->
+
+          <ion-grid style="background-color: #3e9dd5; margin-top: 30px;">
+              <ion-row align-items-center style="padding: 50px 20px 50px 20px;">
+                  <ion-col col-12 col-sm>
+                  </ion-col>
+                  <ion-col col-12 col-sm>
+                      <header class="div-header" style=" text-align: center;">
+                          <p style=" text-align: justify; text-justify: inter-word; color: white;">You do not have any collectors currently.
+                              Please start a new collection by clicking the button bellow.</p>
+                              <button ion-button style="background-color: #1f3a4d" (click)="startNewCollectorsLink()" >New</button>
+                      </header>
+                  </ion-col>
+                  <ion-col col-12 col-sm>
+                      <img src="/assets/imgs/clouddrop.png" alt="mockup" />
+                  </ion-col>
+                  <ion-col col-12 col-sm>
+                  </ion-col>
+              </ion-row>
+            </ion-grid>
+
+            <ion-grid style="background-color: #3e9dd5; margin-top: 30px;">
+                <ion-row align-items-center style="padding: 50px 20px 50px 20px;">
+                    <ion-col col-12 col-sm>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <header class="div-header" style=" text-align: center;">
+                            <p style=" text-align: justify; text-justify: inter-word; color: white;">Your collectors are running!
+                              Click the button to check on collectors progress.
+                            </p>
+                                <button ion-button style="background-color: #1f3a4d">Running</button>
+                        </header>
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                        <img src="/assets/imgs/clouddrop.png" alt="mockup" />
+                    </ion-col>
+                    <ion-col col-12 col-sm>
+                    </ion-col>
+                </ion-row>
+              </ion-grid>
+
+              <ion-grid style="background-color: #3e9dd5; margin-top: 30px;">
+                  <ion-row align-items-center style="padding: 50px 20px 50px 20px;">
+                      <ion-col col-12 col-sm>
+                      </ion-col>
+                      <ion-col col-12 col-sm>
+                          <header class="div-header" style=" text-align: center;">
+                              <p style=" text-align: justify; text-justify: inter-word; color: white;">Your Collectors are finished!
+                                To complete your collection please click the payment button.
+                              </p>
+                                  <button ion-button style="background-color: #1f3a4d">Pay</button>
+                          </header>
+                      </ion-col>
+                      <ion-col col-12 col-sm>
+                          <img src="/assets/imgs/clouddrop.png" alt="mockup" />
+                      </ion-col>
+                      <ion-col col-12 col-sm>
+                      </ion-col>
+                  </ion-row>
+                </ion-grid>
+              <!-- <alert
+      ng-show="true"
+      type="success"
+      dismissOnTimeout= 1500
+      dismissible="true"
+      onClosed="onDismissAlert(alert.id)"
+      *ngFor="let alert of successAlerts$ | async">
+      {{alert.message}}
+    </alert>
+
+    <! ERROR ALERTS -->
+
+    <!-- <alert
+      ng-show="true"
+      type="danger"
+      dismissOnTimeout = 1500
+      dismissible="true"
+      (onClosed)="onDismissAlert(alert.id)"
+      *ngFor="let alert of errorAlerts$ | async">
+      {{alert.message}}
+    </alert>  -->
+
+</ion-content>

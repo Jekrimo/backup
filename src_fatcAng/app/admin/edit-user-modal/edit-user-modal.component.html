@@ -1,0 +1,130 @@
+<app-user-auth-modal #UserAuthModalComponent></app-user-auth-modal>
+<div class="modal fade" bsModal #adminModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md modal-editUser">
+    <div class="modal-content modal-editUser">
+      <div class="modal-header" id="banner">
+        <div *ngIf="typeofModal === 'newUser'">
+          <h4 class="modal-title pull-left" id="titleText">Add New User</h4>
+        </div>
+        <div *ngIf="typeofModal !== 'newUser'">
+          <h4 class="modal-title pull-left" id="titleText">Edit User: {{addEditUser.userName}}</h4>
+        </div>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="HideEditModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalRect">
+        <div class="row">
+          <div class="col leftModal">
+            <form class="form-group" [formGroup]="UserInfo">
+
+              <div class="gimmeRoom">
+                <label>User Login</label>
+                <input class="code form-control" formControlName="userName" type="text" [(ngModel)]="addEditUser.userName" />
+              </div>
+
+              <div class="gimmeRoom">
+                <label>First Name</label>
+                <input class="code form-control" formControlName="firstName" type="text" [(ngModel)]="addEditUser.firstName" />
+              </div>
+
+              <div class="gimmeRoom">
+                <label>Last Name</label>
+                <input class="code form-control" formControlName="lastName" type="text" [(ngModel)]="addEditUser.lastName" />
+              </div>
+
+              <div *ngIf="typeofModal !== 'newUser'">
+                <div class="gimmeRoom">
+                  <label>User Auth Token</label>
+                  <input class="code form-control" formControlName="authcode" [(ngModel)]="addEditUser.authCode" (focus)="$event.target.select()"
+                    readonly="readonly">
+                </div>
+              </div>
+
+              <div class="gimmeRoom">
+                <input hidden formControlName="id" [(ngModel)]="addEditUser.id" [value]="addEditUser.id ? addEditUser.id : null">
+                <label>Email</label>
+                <input class="code form-control" formControlName="email" type="text" [(ngModel)]="addEditUser.email" (focus)="$event.target.select()"
+                />
+              </div>
+
+              <div *ngIf="!modalStatus">
+                <div class="gimmeRoom">
+                  <label>Change User Password</label>
+                  <input class="code form-control" formControlName="changepassword"  [(ngModel)]="addEditUser.pwUserInput" (focus)="$event.target.select()" />
+                </div>
+              </div>
+
+
+              <div class="gimmeRoom">
+                <label>Configuration</label>
+                <div class="row ">
+                  <div class="radio-inline" formControlName="userConfig" ngDefaultControl>
+                    <span class="radio-inline">
+                <input type="radio"
+                name="userConfig"
+                formControlName="userConfig"
+                 value="Law Enforcement"
+                  [(ngModel)]="addEditUser.configuration"
+                  [checked]="addEditUser.configuration === 'Law Enforcement' ? 'true' : 'false'">Law Enforcement</span>
+                    <span class="radio-inline">
+                <input type="radio"
+                 name="userConfig"
+                 formControlName="userConfig"
+                 value="Media Explotation"
+                 [(ngModel)]="addEditUser.configuration"
+                 [checked]="addEditUser.configuration === 'Media Explotation' ? 'true' : 'false'" checked>Media Explotation</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="gimmeRoom">
+                <label>User Type</label>
+                <div class="row ">
+                  <div class="radio-inline" formControlName="userType" ngDefaultControl>
+                    <span class="radio-inline">
+              <input type="radio"
+              formControlName="userType"
+              name="userType"
+              [(ngModel)]="addEditUser.isAdmin"
+              [value]=true
+              [checked]="addEditUser.isAdmin === true ? 'true' : 'false'">Administrator</span>
+                    <span class="radio-inline">
+              <input type="radio"
+              formControlName="userType"
+              name="userType"
+              [(ngModel)]="addEditUser.isAdmin"
+              [value]=false
+              [checked]="addEditUser.isAdmin === false ? 'true' : 'false'" checked>Default User</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="gimmeRoom buttonsYo">
+                <div *ngIf="modalStatus !== 'newUser'">
+                  <button (click)="deleteUser(addEditUser.id)" class="btn btn-primary panelButton btn-xs pull-left">Delete User</button>
+                </div>
+                <div *ngIf="modalStatus !== 'newUser'">
+                  <button (click)="saveUserConfig(UserInfo.value)" class="btn btn-primary panelButton btn-xs pull-right saveUserbutton">Save User</button>
+                </div>
+                <div *ngIf="modalStatus === 'newUser'">
+                  <button (click)="HideEditModal()" class="btn btn-primary panelButton btn-xs pull-left">Cancel</button>
+                </div>
+                <div *ngIf="modalStatus === 'newUser'">
+                  <button (click)="addUserConfig(UserInfo.value)" class="btn btn-primary panelButton btn-xs pull-right saveUserbutton">Add User</button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="w-100"></div>
+          <div class="col">
+            <div class="newUserExplain">Configuration defines default setting for the user. The law enforcement configuration includes free text input
+              boxes that allow a user to input collection name, evidence number, examiner name, and description. The media
+              explotation setting has far fewer input options to reduce the probability of including classified information
+              on accident.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

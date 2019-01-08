@@ -1,0 +1,96 @@
+<p>fuccccck</p>
+<ion-content style="background-color: #3e9dd5">
+
+  <ion-toolbar>
+    <a  (click)="goHome()"><img src="/assets/imgs/cloudCatcher.png" alt="mockup" style="max-height: 50px; max-width: 230px;"/></a>
+    <ion-list style="float: right; margin-top: 10px;" menuToggle>
+        <button ion-button icon-only class="menuButton" menuToggle>
+            <ion-icon name="menu" style="color: white;" ></ion-icon>
+          </button>
+  </ion-list>
+</ion-toolbar>
+
+<ion-menu [content]="mycontent" side="right" >
+    <ion-content style="background-color: #3e9dd5">
+      <ion-list style="margin-top: 10%;" >
+              <button ion-button menuClose style="width: 100%; background-color: #1f3a4d;">
+                  <a  style="color:white;text-decoration: none;">Overview</a>
+              </button>
+              <button ion-button menuClose style="width: 100%; background-color: #1f3a4d;">
+                  <a style="color:white;text-decoration: none;">Available Sites</a>
+              </button>
+              <button ion-button menuClose style="width: 100%; background-color: #1f3a4d;">
+                  <a  style="color:white;text-decoration: none;">Pricing</a>
+              </button>
+            <button ion-button  menuClose style="width: 100%; background-color: #1f3a4d;">
+                <a style="color:white;text-decoration: none;"  >Sign Up</a>
+            </button>
+            <button ion-button (click)="loginUserModal()" menuClose style="width: 100%; background-color: #1f3a4d;">
+                <a  style="color:white;text-decoration: none;">Login</a>
+               </button>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+<ion-nav #mycontent ></ion-nav>
+<ion-menu [content]="mycontent" ></ion-menu>
+
+            <!-- TODO find ionic keyboard to generate on click inside of form -->
+
+            <ion-list class="signUpForm">
+
+                <header class="div-header" style=" text-align: center;">
+                    <h3 class="div-title" data-text="About Us" style=" color: white;">
+                      Please fill out all the information and submit to be reviewed for access to Cloud Catcher
+                    </h3>
+                </header>
+
+                <form class="form-group" [formGroup]="SignUpForm">
+                <ion-item>
+                  <ion-label color="primary" stacked>Full Name</ion-label>
+                  <ion-input placeholder="Full Name" formControlName="fullName" ></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label color="primary" stacked>Organization</ion-label>
+                    <ion-input placeholder="Organization" formControlName="organization" ></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label color="primary" stacked>Badge / identification number</ion-label>
+                      <ion-input placeholder="Badge / identification number" formControlName="badgeIdNumber" ></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label color="primary" stacked>Organization phone number</ion-label>
+                        <ion-input placeholder="Organization phone number" formControlName="phoneNumber" ></ion-input>
+                      </ion-item>
+                      <ion-item>
+                          <ion-label color="primary" stacked>Organization address</ion-label>
+                          <ion-input placeholder="Organization address" formControlName="address" ></ion-input>
+                        </ion-item>
+                    <button ion-button navPop style="float: right; margin-top: 10px; background-color: #1f3a4d;" type="submit" (click)="signUpSubmit()" >Submit</button>
+                  </form>
+                  </ion-list>
+
+              <button ion-button navPop style="margin-left: 7%; margin-top: 10px; background-color: #1f3a4d;">Go Back</button>
+      <!-- <alert
+      ng-show="true"
+      type="success"
+      dismissOnTimeout= 1500
+      dismissible="true"
+      onClosed="onDismissAlert(alert.id)"
+      *ngFor="let alert of successAlerts$ | async">
+      {{alert.message}}
+    </alert>
+
+    <! ERROR ALERTS -->
+
+    <!-- <alert
+      ng-show="true"
+      type="danger"
+      dismissOnTimeout = 1500
+      dismissible="true"
+      (onClosed)="onDismissAlert(alert.id)"
+      *ngFor="let alert of errorAlerts$ | async">
+      {{alert.message}}
+    </alert>  -->
+
+</ion-content>

@@ -1,0 +1,101 @@
+
+<ion-content style="background-color: #3e9dd5">
+
+        <ion-toolbar style="position: fixed;">
+            <a (click)="goHome()"><img src="/assets/imgs/cloudCatcher.png" alt="mockup" style="max-height: 50px; max-width: 100%;"/></a>
+              <ion-list style="float: right; margin-top: 20px;" menuToggle>
+                  <button ion-button icon-only class="menuButton" style=" margin-right: 30px;" menuToggle>
+                    <ion-icon name="menu" style="color: white; margin-right: 0px;" ></ion-icon>
+                  </button>
+              </ion-list>
+            </ion-toolbar>
+
+            <ion-menu [content]="mycontent" side="right" style="position: fixed;">
+                <ion-content style="background-color: #3e9dd5">
+                  <ion-list style="margin-top: 10%;" >
+                          <button ion-button menuClose style="width: 100%; background-color: #1f3a4d;">
+                              <a  style="color:white;text-decoration: none;">Start New Collection</a>
+                          </button>
+                          <button ion-button menuClose style="width: 100%; background-color: #1f3a4d;">
+                              <a style="color:white;text-decoration: none;">Profile</a>
+                          </button>
+                          <button ion-button menuClose style="width: 100%; background-color: #1f3a4d;" (click)="logoutUser()" >
+                              <a style="color:white;text-decoration: none;">Logout</a>
+                          </button>
+                  </ion-list>
+                </ion-content>
+              </ion-menu>
+            <ion-nav #mycontent ></ion-nav>
+            <ion-menu [content]="mycontent" ></ion-menu>
+
+            <ion-grid style="background-color: #1f3a4d; margin-top: 10%; width: 80%; border-radius: 5px;">
+                <ion-row align-items-center style="padding: 50px 20px 50px 20px;">
+                    <ion-row style="width: 100%;" >
+                    <ion-col col-12 col-sm>
+                        <ion-item style="color: white; background-color:#1f3a4d; margin-top: 25px;" no-lines>Add Collector:</ion-item>
+                    </ion-col>
+                  <ion-col col-12 col-sm>
+                        <ion-list [formGroup]="collectorAuthForm">
+                            <ion-item style="background-color:#1f3a4d;" no-lines>
+                                <ion-label color="primary" style="color: white; margin-bottom: 7px;" stacked>Type</ion-label>
+                              <ion-select style="color: white; background-color:#3e9dd5; border-radius: 5px;"  formControlName="collectorType">
+                                <ion-option *ngFor="let collector of collectorsTypes$ | async" value="{{collector.name}}">{{collector.name}}</ion-option>
+                              </ion-select>
+                            </ion-item>
+                          </ion-list>
+                  </ion-col>
+
+                  <ion-col col-12 col-sm>
+                      <ion-item style="background-color:#1f3a4d" no-lines [formGroup]="collectorAuthForm">
+                          <ion-label color="primary" style="color: white; margin-bottom: 5px;" stacked>Collector Name</ion-label>
+                          <ion-input placeholder="Collector Alias" style=" background-color:#3e9dd5; border-radius: 5px; color: white" formControlName="collectorName"></ion-input>
+                        </ion-item>
+                  </ion-col>
+
+                  <ion-col col-12 col-sm>
+                    <ion-label color="primary" stacked style="color: white; margin-left: 15px;">Authenticate</ion-label>
+                      <button ion-button class="dontHover" style=" background-color:#3e9dd5; margin-left: 15px;" (click)="NewCollectorAuthCreate()">
+                          Authenticate
+                      </button>
+                  </ion-col>
+
+                    </ion-row>
+                </ion-row>
+
+              </ion-grid>
+
+              <ion-grid style="background-color: #1f3a4d; margin-top: 50px; width: 80%; margin-bottom: 25px;border-radius: 5px;">
+                  <ion-row align-items-center style="padding: 50px 20px 50px 20px;">
+                      <ion-row style="width: 100%;" >
+                          <ion-col col-12 col-sm>
+                              <ion-item style="color: white; background-color:#1f3a4d; margin-top: 25px;" no-lines>
+                                Queued Collectors:
+                              </ion-item>
+                          </ion-col>
+                        </ion-row>
+                      <ion-row *ngFor="let collector of quedCollectors$ | async" style="width: 100%;">
+                          <ion-col col-12 col-sm>
+                              <ion-item style="color: white; background-color:transparent; margin-top: 25px;" no-lines>
+                              <button ion-button title="Delete Collector" (click)="deleteCollector($event, collector.id)">
+                                  <ion-icon name="trash"></ion-icon>
+                                 </button>
+                                </ion-item>
+                          </ion-col>
+                          <ion-col col-12 col-sm>
+                              <ion-item style="color: white; background-color:transparent; margin-top: 25px;" no-lines>Type: <br> {{collector.collectorTypeName}}</ion-item>
+                          </ion-col>
+                          <ion-col col-12 col-sm>
+                              <ion-item style="color: white; background-color:transparent; margin-top: 25px;" no-lines>Collector Name: <br>{{collector.collectorAlias}}</ion-item>
+                          </ion-col>
+                          <ion-col col-12 col-sm>
+                              <ion-item style="color: white; background-color:transparent; margin-top: 25px;" no-lines>Summary: <div *ngFor="let si of GetSummaryItems(collector.summary)">
+                                  <span class="textWhite">{{si.name}} : {{si.value}}</span>
+                                </div><br></ion-item>
+                          </ion-col>
+                          <ion-col col-12 col-sm>
+                              <ion-item style="color: white; background-color:transparent; margin-top: 25px;" no-lines>Target Username and Password: <br>{{collector.authInfo.username}}: {{collector.authInfo.password}}</ion-item>
+                          </ion-col>
+                        </ion-row>
+                  </ion-row>
+                </ion-grid>
+</ion-content>

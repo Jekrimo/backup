@@ -1,0 +1,49 @@
+#banner {
+  width: 100%;
+  height: 100%;
+  background-color: lightslategrey;
+}
+
+#titleText {
+  padding-top: 5px;
+  color: white
+}
+#modalRect {
+  background-color: lightgrey;
+}
+
+.code {
+  width: 400px;
+}
+
+.login-label {
+  width: 75px;
+}
+.login-code {
+  width: 320px;
+}
+
+.authButton {
+  min-width: 120px;
+}
+
+.authButton[disabled] {
+  pointer-events: none;
+}
+div#modalRect.modal-body {
+  height: 275px;
+}
+
+.sharedAuthButtons {
+  margin-top: 15px;
+}
+button.btn.btn-primary.panelButton.btn-xs.sharedAuthButtons.questionbtn {
+  margin-top: 10px;
+}
+
+.tooltip-wrapper {
+  display: inline-block;
+  // while this may seem like it'll always be on,
+  // if button is enabled, it gets pointer events again and eats the cursor
+  cursor: not-allowed;
+}

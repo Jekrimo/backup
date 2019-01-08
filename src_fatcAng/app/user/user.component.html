@@ -1,0 +1,35 @@
+<app-banner></app-banner>
+<div class="box center">
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <form class="form-group" [formGroup]="UserInfo">
+        <div class="row">
+          <h4 class="textWhite">Username: {{currentUser.userName}}</h4>
+          <input class="code form-group form-control form-inline" formControlName="userName" type="text" [placeholder]="currentUser.userName">
+        </div>
+        <div class="row">
+          <h4 class="textWhite form-group from-inline">First Name: {{currentUser.firstName}}</h4>
+          <input class="form-group form-control form-inline" formControlName="firstName" type="text" [placeholder]="currentUser.firstName">
+        </div>
+        <div class="row">
+          <h4 class="textWhite">Last Name: {{currentUser.lastName}}</h4>
+          <input class="code form-group form-control form-inline" formControlName="lastName" type="text" [placeholder]="currentUser.lastName">
+        </div>
+        <div class="row">
+          <h4 class="textWhite form-group from-inline">Email: {{currentUser.email}}</h4>
+          <input class="form-group form-control form-inline" formControlName="email" type="text" [placeholder]="currentUser.email">
+        </div>
+        <div class="row">
+          <h4 class="textWhite">Password:</h4>
+          <button type="button" class="btn btn-primary panelButton btn-xs sharedAuthButtons questionbtn" tooltip="Leave blank if you would like to keep your current password.">?
+          </button>
+          <input class="code form-group form-control form-inline" formControlName="changepassword" type="password">
+        </div>
+        <button type="submit" (click)="UserUpdateSubmit()" mdTooltip="submit" class="btn btn-warning form-inline panelButton btn-xs authButtonSubmit">Submit</button>
+      </form>
+    </div>
+    <div class="col-sm-3"></div>
+  </div>
+  <button class="btn btn-warning panelButton btn-xs pull-right" (click)="Back()">Back</button>
+</div>

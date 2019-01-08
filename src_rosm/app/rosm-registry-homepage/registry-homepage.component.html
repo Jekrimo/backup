@@ -1,0 +1,61 @@
+
+<div style="text-align: end; margin-bottom: 10px;  ">
+
+
+</div>
+
+<app-menu></app-menu>
+
+
+<div class="internalhpwrapper menu-wrap" s>
+  <div class="welcomegrid" >
+      <h1 class="txt-blue internalHeaders" style="margin-top: 10px;">Welcome</h1>
+    <p class="txt-blue internalText">
+      Lorem ipsum dolor sit amet, aeterno nominavi ponderum sea ad, quot nulla primis pri ei. Vim in quot vide natum,
+    an qui dicam lobortis. Vim putent scripserit in, civibus interpretaris ea sea. Cum amet etiam quidam ne. Cu facete labitur his.
+    Ea debet placerat suscipiantur usu, eu eos perpetua sadipscing instructior.
+</p>
+  </div>
+  <button pButton (click)="TestService()" type="button" label="Search" style="background-color: #273238; color: white; font-family: 'Agency FB' "> Test Service</button>
+  <div class="packagesgrid">
+      <h1 class="txt-blue internalHeaders" style="margin-top: 10px;">Registered Packages</h1>
+    <div style="padding-left: 40px; padding-right: 40px;">
+    <table class="table table-hover" >
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Last Updated</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let packages of allPackages$ | async" (click)="goToPackage(packages.id)" class="tablePackagesRow" >
+        <td>{{packages.id}}</td>
+        <td>{{packages.description}}</td>
+        <td>{{packages.author}}</td>
+        <td>{{packages.date}}</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div class="linkgrid">
+      <h1 class="txt-blue internalHeaders" style="margin-top: 10px;">Links</h1>
+    <h3 class="txt-blue internalText">
+      Overview
+    </h3>
+    <h3 class="txt-blue internalText">
+      Most Recent
+    </h3>
+    <h3 class="txt-blue internalText">
+      Most Popular
+    </h3>
+    <h3 class="txt-blue internalText">
+      Getting Started
+    </h3>
+    <h3 class="txt-blue internalText">
+      Meta Guide
+    </h3>
+  </div>
+</div>

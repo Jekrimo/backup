@@ -1,0 +1,102 @@
+<app-banner></app-banner>
+<div class="box" *ngIf="currentCase">
+ <div class="backgroundRect">
+  <div class="row">
+    <div class="col-sm-10">
+      <h1 class="caseTitle">Case #: {{currentCase.case.caseNumber}}</h1>
+    </div>
+    <div class="col-md-2">
+    <div class="buttonRight">
+      <div *ngIf="!disableRunButton">
+      <button class="btn btn-warning panelButton right" [disabled]="disableRunButton" (click)="onRunSeriesClick(currentCase.configurations)">Run Collector
+      </button>
+      </div>
+    </div>
+  </div>
+    </div>
+
+
+  <div id="progBarsLoop" *ngFor="let collector of currentCase.configurations">
+    <div class="row">
+
+      <div class="progressContainer">
+
+        <h2 class="textWhite">Collector: {{collector.collectorAlias}}</h2>
+
+        <div *ngIf="(progressMessages[collector.id])">
+          <div class="progress">
+            <div class="progress-bar progress-bar-info"  role="progressbar"
+                 aria-valuenow="0"
+                 aria-valuemin="0" aria-valuemax="100" [style.width]="progressMessages[collector.id].percent + '%'">
+            </div>
+          </div>
+          <h5 *ngIf="(progressMessages[collector.id].stepName)" class="textWhite">
+            <div>
+              <span>Step:</span> <span [innerHTML]="progressMessages[collector.id].stepName"></span>
+            </div>
+          </h5>
+
+          <div class="finishedCollector pull-right" *ngIf="collectionCompletes[collector.id]">
+            <span class="glyphicon glyphicon-check" style="color:mediumspringgreen; margin-left: -20px;"></span>
+          </div>
+
+          <h5 class="textWhite">
+            <span class="pull-right" *ngIf="(progressMessages[collector.id].showEstimatedTime)">
+              <div>
+                <span class="estimationMessages">Estimated to complete in {{progressMessages[collector.id].niceRemaining}} ... </span>
+              </div>
+            </span>
+            <span class="pull-right"
+                  *ngIf="!(progressMessages[collector.id].showEstimatedTime) && !collectionCompletes[collector.id]">
+              Estimating....
+            </span>
+          </h5>
+        </div> <!-- end progress msg present for this collector -->
+
+        <div *ngIf="!(progressMessages[collector.id])">
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"
+                 aria-valuenow="0"
+                 aria-valuemin="0" aria-valuemax="100" [style.width]="'0%'">
+            </div>
+          </div>
+        </div>
+
+        <!--<h4 *ngIf="(linkMessages.metadata[collector.id])">
+          <a class="downloadlink" [href]="getMetadataLink(collector.id)"><button class="btn btn-success panelButton">Download Metadata</button></a>
+        </h4>-->
+        <h4 *ngIf="(linkMessages.collection[collector.id])">
+          <a  class="downloadlink" [href]="getDownloadLink(collector.id)"><button class="btn btn-success panelButton">Download Collection</button></a>
+        </h4>
+        <div *ngIf="isErrorLogged(logMessages) === true" class="logtextline-warn">
+          Errors found in the collector run. Please check the collector log for more information.
+        </div>
+       </div> <!-- End progress container -->
+      <!-- todo: button to show/hide. hacked in to make sure it works -->
+      <div *ngIf="(logMessages && logMessages[collector.id])">
+        <!-- this is a binding trick to get the log to autoscroll. binding directly to element caused change-check asserts -->
+        <!--<textarea #logTextArea class="log-container" [scrollTop]="getScrollHeight(logTextArea)">-->
+          <!--{{getLogText(collector.id)}}-->
+        <!--</textarea>-->
+
+        <!-- since we're tailing last x messages, use normal dom elements -->
+        <div class="log-container">
+          <span *ngFor="let l of logMessages[collector.id]" [class]="getCssClassForLogLevel(l.level)">
+            {{l.level}}-{{l.time}}: {{l.log}}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ </div>
+
+</div>
+<div  *ngIf="!currentCase">
+  <span>Loading case...</span>
+</div>
+<div style="max-width: 1500px;" >
+<div class="buttonRight" style="margin-right: 30px; margin-top: 20px;" >
+  <button class="btn btn-warning panelButton right"  (click)="onBackClick()">Back</button>
+</div>
+</div>

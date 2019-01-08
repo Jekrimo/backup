@@ -1,0 +1,122 @@
+<app-banner></app-banner>
+<app-auth-modal (newAuth)="UpdateAuth($event)"></app-auth-modal>
+<div class="box" *ngIf="(currentCase)">
+  <div class="backgroundRect">
+    <div class="row caseTitle">
+      <div class="col-sm-10">
+        <h1 class="textWhite">Case Configuration</h1>
+      </div>
+    </div>
+    <div class="flexboxRow1" *ngIf="displayCurrentUsertype.configuration === 'Law Enforcement'">
+      <div class="col-sm-6">
+        <h5 class="textWhite">Case</h5><input class="form-control" type="text" [(ngModel)]="currentCase.caseNumber" />
+        <h5 class="textWhite">Evidence#</h5><input class="form-control" type="text" [(ngModel)]="currentCase.evidenceNumber" />
+      </div>
+      <div class="col-sm-6">
+        <h5 class="textWhite descriptionText">Description</h5><br/>
+        <textarea class="form-control configDescription" rows="5" cols="140" [(ngModel)]="currentCase.description">
+      {{currentCase.description}}
+    </textarea>
+      </div>
+    </div>
+    <div class="flexboxRow1" *ngIf="displayCurrentUsertype.configuration === 'Media Explotation'">
+      <div class="col-sm-6">
+        <h5 class="textWhite">Collection #</h5><input class="form-control" type="text" [(ngModel)]="currentCase.evidenceNumber" />
+      </div>
+      <div class="col-sm-6">
+        <h5 class="textWhite">Description</h5><input class="form-control" type="text" [(ngModel)]="currentCase.description" />
+      </div>
+    </div>
+
+    <div class="row collectorButtonsRow">
+      <div class="col-sm-2">
+        <h3 class="textWhite addCollectorText">Add Collector:</h3>
+      </div>
+      <div class="col-sm-10">
+        <div class="table-responsive">
+          <form [formGroup]="NewCollector" (ngSubmit)="NewCollectorAuthCreate()" (timeupdate)="200">
+            <table class="table table-responsive">
+              <thead>
+                <tr>
+                  <th class="textWhite">Type</th>
+                  <th class="textWhite">Collector Name</th>
+                  <th class="textWhite">Authenticate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><select id="typeSelection" class="form-control" formControlName="collectorType">
+                <option value="" selected>Select</option>
+                <option *ngFor="let ct of collectorTypes$ | async" >
+                  {{ct.name}}
+                </option>
+              </select></td>
+                  <td><input class="form-control" type="text" formControlName="collectorName"></td>
+                  <td>
+                    <button *ngIf="this.NewCollector.value && this.NewCollector.value.collectorType != ''"
+                            class="btn btn-warning panelButton btn-xs newCollectorAddAuth"
+                            type="submit">
+                      Authenticate
+                    </button>
+                    <div *ngIf="this.NewCollector.value.collectorType == ''" [style.width]="'119.8px'" [style.margin-top]="'9px'">
+                      <em class="textWhite">Select a valid collector type first</em>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="collectorRect">
+        <div class="row">
+          <div class="col-sm-12 acqSummary">
+            <div class="table-responsive">
+              <table class="table table-hover table-responsive">
+                <thead>
+                  <tr>
+                    <th class="textWhite">Delete</th>
+                    <th class="textWhite">Type</th>
+                    <th class="textWhite">Collector Name</th>
+                    <th class="textWhite">Acquisition Summary</th>
+                    <th class="textWhite">Target Username and Password</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let collector of collectors$ | async">
+                    <td>
+                      <button title="Delete Collector" type="button" class="btn btn-warning panelButton btn-xs" aria-label="Left Align" (click)="deleteCollector($event, collector.id)">
+                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </button>
+                    </td>
+                    <td class="textWhite">{{collector.collectorTypeName}}</td>
+                    <td class="textWhite">{{collector.collectorAlias}}</td>
+                    <td>
+                      <div *ngFor="let si of GetSummaryItems(collector.summary)">
+                        <span class="textWhite">{{si.name}} : {{si.value}}</span>
+                      </div>
+                    </td>
+
+                    <td><span class="textWhite">{{collector.authInfo.username}}: {{collector.authInfo.password}}</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <button class="btn btn-warning panelButton" (click)="goToCaseHistory()">Manage case collections</button>
+</div>
+<div style="max-width: 1500px;" >
+  <div class="buttonRight divwidth" style="margin-right: 45px; margin-top: 25px;">
+    <button class="btn btn-warning panelButton btn-xs" (click)="Back()">Back</button>
+    <div class="tooltip-wrapper" [tooltip]="getAuthTooltip()" [placement]="'bottom'">
+    <button class="btn btn-primary panelButton btn-xs pull-right authButton sharedAuthButtons" [disabled]="this.haveCollectors() === false" (click)="Next()">Next</button>
+  </div>
+  </div>
+  </div>

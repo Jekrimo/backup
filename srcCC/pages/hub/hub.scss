@@ -1,0 +1,87 @@
+page-hub {
+  .toolbar-background {
+    background-color: #1f3a4d;
+  }
+  // .headerBackground {
+  //   background: url(images/cloud.png) no-repeat scroll center center #c8c9c7;
+  // }
+  .headerBackground {
+    position: relative;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-flow: column wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 75%;
+    min-height: 75vh;
+    padding: 2em;
+    text-align: center;
+    color: #ffffff;
+    background: url(/assets/imgs/cloud.png) no-repeat scroll center center #c8c9c7;
+    background-size: cover;
+  }
+  .scroll-content{
+    overflow-y: auto !important;
+}
+  .scroll-down-icon {
+    position: absolute;
+    right: 0;
+    bottom: 1em;
+    left: 0;
+    margin: auto;
+    display: block;
+    width: 2em;
+    height: 2em;
+  }
+
+  .blueSquare {
+    background-color: #3e9dd5;
+  }
+  .service {
+    padding: 1.5em;
+    margin: 0.9375em 0.25em;
+    height: 270px;
+    text-align: center;
+    color: #101820;
+    background: none repeat scroll center center #ffffff;
+  }
+  button:hover {
+    color: #3e9dd5;
+  }
+
+  .alert-success {
+    background-image: none !important;
+    background: #60939f !important;
+    color: white !important;
+    border-color: grey !important;
+    width: 80%;
+    margin-left: 15rem;
+    position: absolute;
+    margin-top: 8rem;
+    text-align: center;
+    z-index: 999;
+  }
+
+  .alert-danger {
+    background-image: none !important;
+    background: #b40e2a !important;
+    color: white !important;
+    border-color: grey !important;
+    width: 80%;
+    margin-left: 15rem;
+    position: absolute;
+    margin-top: 8rem;
+    text-align: center;
+    z-index: 999;
+  }
+
+}
+$grid-breakpoints:	( xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px )
+

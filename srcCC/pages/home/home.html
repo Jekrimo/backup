@@ -1,0 +1,220 @@
+
+<router-outlet></router-outlet>
+<ion-content >
+
+        <ion-toolbar style="position: fixed;">
+      <img src="/assets/imgs/cloudCatcher.png" alt="mockup" style="max-height: 50px; max-width: 230px;"/>
+          <ion-list style="float: right; margin-top: 20px;" menuToggle>
+              <button ion-button icon-only class="menuButton" style=" margin-right: 30px;" menuToggle>
+                <ion-icon name="menu" style="color: white; margin-right: 0px;" ></ion-icon>
+              </button>
+          </ion-list>
+        </ion-toolbar>
+
+        <ion-menu [content]="mycontent" side="right" style="position: fixed;">
+            <ion-content style="background-color: #3e9dd5">
+              <ion-list style="margin-top: 10%;" >
+                      <button ion-button menuClose style="width: 100%; background-color: #1f3a4d;">
+                          <a  style="color:white;text-decoration: none;">Overview</a>
+                      </button>
+                      <button ion-button menuClose style="width: 100%; background-color: #1f3a4d;">
+                          <a style="color:white;text-decoration: none;">Available Sites</a>
+                      </button>
+                      <button ion-button menuClose style="width: 100%; background-color: #1f3a4d;">
+                          <a  style="color:white;text-decoration: none;">Pricing</a>
+                      </button>
+                    <button ion-button (click)="signUpLink()" menuClose style="width: 100%; background-color: #1f3a4d;">
+                        <a style="color:white;text-decoration: none;"  >Sign Up</a>
+                    </button>
+                    <button ion-button (click)="loginUserModal()" menuClose style="width: 100%; background-color: #1f3a4d;">
+                        <a  style="color:white;text-decoration: none;">Login</a>
+                       </button>
+              </ion-list>
+            </ion-content>
+          </ion-menu>
+        <ion-nav #mycontent ></ion-nav>
+        <ion-menu [content]="mycontent" ></ion-menu>
+
+  <!-- I don't think we need alerts on home page: login takes care of itself. -->
+
+        <!-- <alert
+  ng-show="true"
+  type="success"
+  dismissOnTimeout= 1500
+  dismissible="true"
+  onClosed="onDismissAlert(alert.id)"
+  *ngFor="let alert of successAlerts$ | async">
+  {{alert.message}}
+</alert> -->
+
+<!-- ERROR ALERTS -->
+
+<!-- <alert
+  ng-show="true"
+  type="danger"
+  dismissOnTimeout = 1500
+  dismissible="true"
+  (onClosed)="onDismissAlert(alert.id)"
+  *ngFor="let alert of errorAlerts$ | async">
+  {{alert.message}}
+</alert> -->
+
+  <!-- banner -->
+  <div class="headerBackground">
+      <div class="banner" style="padding-top: 150px; padding-bottom:100px;">
+          <h4>Collect Forensically Secure Evidence from the Cloud</h4>
+          <h1 style="font-size: 80px">Cloud Catcher</h1>
+          <p>Automatically collect and secure evidence from popular Cloud-based sites like Google, Facebook, Twitter, and many more.</p>
+          <button ion-button class="buttonStylez" style="background-color: #1f3a4d ">Why Cloud Catcher?</button>
+          <button ion-button class="buttonStylez" style="background-color: #1f3a4d" role="button" >Get Started</button>
+        </div>
+      <span class="scroll-down-icon"><img src="/assets/imgs/arrows.png" alt="mockup" style="margin-top: 0px;" /></span>
+  </div>
+
+<!-- Content Squares -->
+<ion-grid style="background-color: white;">
+    <ion-row align-items-center style="padding: 50px 20px 50px 20px;">
+      <ion-col col-12 col-sm>
+          <header class="div-header" style=" text-align: center;">
+              <h3 class="div-title" data-text="About Us">Why Cloud Catcher?</h3>
+              <h4 style=" text-align: justify; text-justify: inter-word;">Cloud Catcher makes it easy to automatically collect evidence from Cloud-based service providers. Provide a user name and password and Cloud Catcher will download all available user data
+                  (friends, posts, likes, emails, etc.) in a forensically secure container.</h4>
+                <button ion-button style="background-color: #1f3a4d">Explore Available Sites</button>
+                <button ion-button style="background-color: #1f3a4d">Try For Free</button>
+          </header>
+      </ion-col>
+      <ion-col col-12 col-sm>
+          <img src="/assets/imgs/laptopIcons.png" alt="mockup" data-animation="fadeInUp" [@modalStateOpacity]='state' [@myAwesomeAnimation]='state' (click)="animateMe()" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid style="background-color: #3e9dd5;">
+      <ion-row align-items-center style="padding: 50px 20px 50px 20px;">
+          <ion-col col-12 col-sm>
+              <img src="/assets/imgs/clouddrop.png" alt="mockup" data-animation="fadeInUp" [@modalStateOpacity]='state' [@myAwesomeAnimation]='state' (click)="animateMe()" />
+          </ion-col>
+        <ion-col col-12 col-sm>
+            <header class="div-header" style=" text-align: center;">
+                <h3 class="div-title" data-text="About Us" style=" color: white;">Catching the Cloud</h3>
+                <h4 style=" text-align: justify; text-justify: inter-word; color: white;">Cloud-based data is not like traditional media sources such as computers and cell phones. Unfortunately, some service providers actively make obtaining evidence slow and cumbersome.
+                    Cloud Catcher extracts data and context such as labels, nested comments, and document revision history to help build a complete picture of an online persona.</h4>
+            </header>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid style="background-color: white;">
+        <ion-row align-items-center style="padding: 50px 20px 50px 20px;">
+          <ion-col col-12 col-sm>
+              <header class="div-header" style=" text-align: center;">
+                  <h3 class="div-title" data-text="About Us">Forensically Valid Collections</h3>
+                      <p style=" text-align: justify; text-justify: inter-word;">Cloud Catcher collects data using best practices for collecting and storing digital evidence from Cloud applications with the
+                          expectation that the evidence will be used in a court of law. In addition to the collected data, hash lists, verbose log files, and law enforcement standard forensically
+                          secure containers such as disk image and AFF4 are used. Collections have been designed to be easily analyzed with forensics tools such as X-Ways, EnCase, and Autopsy. <br> <br>
+                          Cloud Catcher utilizes a collection target's credentials (user name and password) to login to their account and automates the collection
+                          of data via access points supplied by the Cloud application to all authenticated users. At no point is any system illegally accessed.   </p>
+                    <button ion-button style="background-color: #1f3a4d">Sign Up</button>
+                    <button ion-button style="background-color: #1f3a4d">Try For Free</button>
+              </header>
+          </ion-col>
+          <ion-col col-12 col-sm>
+              <img src="/assets/imgs/dataFlowIcon.png"  alt="mockup" [@modalStateOpacity]='state' [@myAwesomeAnimation]='state' (click)="animateMe()" data-animation="fadeInUp" />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+  <ion-grid class="blueSquare">
+    <div style="padding: 50px 0px 50px 0px;">
+      <ion-row class="blueSquare" style=" text-align: center;" align-items-center>
+          <ion-col col-12 col-sm >
+          <header class="div-header">
+              <h3 class="div-title" data-text="Services" style="color: white">Available Sites</h3>
+          </header>
+          </ion-col>
+      </ion-row>
+    <ion-row class="blueSquare" align-items-center>
+        <ion-col col-12 col-sm >
+            <div class="service" data-animation="fadeInUp" data-animation-delay="01">
+            <img src="/assets/imgs/googlemail.png" alt="mockup" />
+            <h5>Gmail</h5>
+            <p>Emails, Labels, Contacts, and Hangouts</p>
+            </div>
+        </ion-col>
+        <ion-col col-12 col-sm>
+            <div class="service" data-animation="fadeInUp" data-animation-delay="01">
+            <img src="/assets/imgs/googledrivelogo.png" alt="mockup" />
+            <h5>Google Drive</h5>
+            <p>Folders, Files, Shared Documents, GDocs, GSlides, GSheets, Revisions</p>
+          </div>
+        </ion-col>
+        <ion-col col-12 col-sm >
+            <div class="service" data-animation="fadeInUp" data-animation-delay="01">
+            <img src="/assets/imgs/fblogo.png" alt="mockup" />
+            <h5>Facebook</h5>
+            <p>Friends, Posts, Pages, Groups, Pictures, Videos</p>
+          </div>
+      </ion-col>
+      <ion-col col-12 col-sm>
+          <div class="service" data-animation="fadeInUp" data-animation-delay="01">
+          <img src="/assets/imgs/dropbox.png" alt="mockup" />
+          <h5>Dropbox</h5>
+          <p>File Structure, Files, <br> Shared Files</p>
+        </div>
+    </ion-col>
+    </ion-row>
+    <ion-row class="blueSquare" style="text-align: center;" align-items-center>
+        <ion-col col-12 col-sm >
+            <header class="div-header">
+                <h3 class="div-title" data-text="Services" style="color: white; margin-top: 10px; ">
+                    Reddit, Twitter, Tumblr, Instagram, and LinkedIn coming in 2018 </h3>
+            </header>
+            <button ion-button style="background-color: #1f3a4d" role="button" >Request a Site</button>
+        </ion-col>
+    </ion-row>
+  </div>
+  </ion-grid>
+
+  <ion-grid style="background-color: white; padding: 0px; height: 370px;">
+      <ion-row align-items-center class="pricing" id="Pricing"  >
+          <ion-col col-12 col-sm>
+          </ion-col>
+        <ion-col col-12 col-sm style="height: 100%; vertical-align: middle; ">
+          <div style="width: 100%; margin-top: 100px; text-align: center;">
+          <h1 >Pay for only what you collect</h1>
+          <h3 >$0.20/GB with a $1 minimum; <br> <a href="" style="text-decoration: none; color: #3e9dd5;">contact us</a> for bulk discounts</h3>
+          <button ion-button class="buttonStylez" style="background-color: #1f3a4d" role="button" >Get Started</button>
+          </div>
+        </ion-col>
+        <ion-col col-12 col-sm>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+<ion-grid style="background-color: #3e9dd5;">
+    <ion-row style=" text-align: center; text-decoration: none;">
+            <ion-col col-12 col-sm >
+                    <h6><a href="https://www.ara.com/" target="_blank" style="color: white;  text-decoration: none; ">Company</a></h6>
+                    <h6><a  style="color: white;  text-decoration: none;">About Us</a></h6>
+                    <h6><a  style="color: white;  text-decoration: none;">Contact Us</a></h6>
+                    <h6><a  style="color: white;  text-decoration: none;">Custom Services</a></h6>
+            </ion-col>
+            <ion-col col-12 col-sm >
+                    <h6><a  style="color: white;  text-decoration: none;">How It Works</a></h6>
+                    <h6><a  style="color: white;  text-decoration: none;">Available Sites</a></h6>
+                    <h6><a  style="color: white;  text-decoration: none;">Forensic Security</a></h6>
+                    <h6><a  style="color: white;  text-decoration: none;">Best Practices</a></h6>
+            </ion-col>
+            <ion-col col-12 col-sm >
+                    <h6><a  style="color: white;  text-decoration: none;">Pricing</a></h6>
+                    <h6><a  style="color: white;  text-decoration: none;">Example Billing</a></h6>
+                    <h6><a  style="color: white;  text-decoration: none;">Terms Of Use</a></h6>
+            </ion-col>
+            <ion-col col-12 col-sm>
+                    <h6><a  style="color: white;  text-decoration: none;">Account</a></h6>
+                    <h6><a  style="color: white;  text-decoration: none;" (click)="loginUserModal()">Login</a></h6>
+                    <h6><a  style="color: white;  text-decoration: none;" (click)="signUpLink()" >Sign Up</a></h6>
+            </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,39 @@
+<app-banner></app-banner>
+<div class= "box">
+  <div class="backgroundRect">
+  <div class="row caseTitle">
+    <div class="col-sm-10">
+      <h1 class="textWhite">Cases</h1>
+    </div>
+    </div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="">Existing Cases</h3>
+    </div>
+    <div class="panel-body existingcasesClass">
+        <table class="table table-responsive table-hover">
+            <thead></thead>
+            <tbody>
+                <tr data-toggle="tooltip" title="Select a Current Case" *ngFor="let case of allExistingCases$ | async"
+                    class="clickable-row" (click)="openExistingCase(case.id)">
+                    <td>Case #: {{case.caseNumber}} - {{case.description}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    <div class="panel panel-default ">
+        <div class="panel-heading">
+            <h3 class="">New Cases</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-group row caseForm" [formGroup]="addNewCase" (ngSubmit)="addCase($event)" >
+                <h3 class="caseName " for="newCaseEntry">Case #: </h3>
+                <input type="newCaseName" class="form-control newCaseInput" formControlName="newCaseName">
+                <button type="submit" class="btn btn-primary panelButton submitNewCase" [disabled]= "disabledBtn()" >Create</button>
+            </form>
+        </div>
+    </div>
+    <!-- <button *ngIf="isAdmin$ | async" class="btn btn-warning panelButton pull-right" (click)="adminLink($event)">User Dashboard</button> -->
+</div>
+</div>

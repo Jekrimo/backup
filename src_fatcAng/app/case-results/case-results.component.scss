@@ -1,0 +1,23 @@
+.progressContainer {
+    width: 100%;
+    display: inline;
+}
+
+
+
+.table-striped > tbody > tr:nth-child(2n+0) > td, .table-striped > tbody > tr:nth-child(2n+0) > th {
+   background-color: #cccccc;
+}
+
+.table thead th { 
+  background-color: #cccccc;
+}
+
+.navTabLink {
+    text-decoration: none;
+    color: white;
+}
+.navTabLink:hover {
+    text-decoration: none;
+    color: black;
+}

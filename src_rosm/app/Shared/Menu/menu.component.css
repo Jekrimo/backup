@@ -1,0 +1,11 @@
+.menu-wrap {
+  background-color: #36474f;
+  border: 3px solid #1a262d;
+}
+.activeTab {
+  background-color: #1a2327;
+  padding: 5px;
+}
+.notActiveTab {
+  padding: 5px;
+}

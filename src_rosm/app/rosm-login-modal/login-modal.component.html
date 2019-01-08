@@ -1,0 +1,26 @@
+
+<div #content>
+  <div class="modal-header" style="background-color: #c9c5c4;" >
+    <h4 class="modal-title center" style="font-size: 3.5em ; margin-left: 37%;">LOGIN</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <img style="height: 175px; margin-left: 30%; display: inline-block;" src="assets/img/rosm-logo.png" alt="Ros-M Logo">
+    <form #f="ngForm" (ngSubmit)="submitCredentials(f)" >
+    <div class="ui-inputgroup" style="  align-content: center; margin-top: 40px; margin-left: 15%;">
+      <input type="text" name="username"  ngModel required #first="ngModel" pInputText style="width: 80%;" placeholder="Email">
+    </div>
+    <div class="ui-inputgroup" style="  text-align: center; margin-top: 10px; margin-left: 15%;">
+      <input type="password" name="password" pInputText  ngModel required #s="ngModel" style="width: 80%;"  placeholder="Password">
+    </div>
+      <div style="padding-bottom: 0px; text-align: right; margin-top: 10px;">
+        <button type="submit" class="btn btn-outline-dark" style="color: white; width: 80px;  margin-right: 80px;" >Login</button>
+      </div>
+      <div style="padding-bottom: 0px; text-align: right;">
+      <a href="/" style=" margin-right: 80px; margin-top: 5px;">Request Access</a>
+      </div>
+    </form>
+  </div>
+</div>

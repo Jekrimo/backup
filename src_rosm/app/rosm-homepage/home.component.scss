@@ -1,0 +1,21 @@
+
+/deep/ .carousel-control-prev-icon {
+  height: 100px;
+  width: 100px;
+  background-image : url("../../assets/img/arrowLeftIcon.png");
+}
+/deep/ .carousel-control-next-icon {
+  height: 100px;
+  width: 100px;
+  background-image : url("../../assets/img/arrowRightIcon.png");
+}
+/deep/ .carousel-item.active  {
+  background-color: orange;
+}
+
+/deep/ .carousel-indicators li {
+  background-color: #36474f;
+}
+/deep/ .carousel-indicators li.active {
+  background-color: #fc5920;
+}

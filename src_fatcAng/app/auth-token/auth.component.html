@@ -1,0 +1,17 @@
+<app-banner></app-banner>
+<div class="box center">
+  <div class="row">
+    <h4 class="textWhite">Please enter the token provided to you by your administrator to continue.
+    </h4>
+    <br>
+  </div>
+  <div class="row">
+    <form class="form-group form-inline" [formGroup]="authToken">
+      <h4 class="textWhite form-inline form-group">Token:</h4>
+      <input class="code form-group form-control form-inline" formControlName="token" type="text" (focus)="$event.target.select()"
+      />
+      <button type="submit" (click)="UserAuthTokenCheck()" class="btn btn-warning form-inline panelButton btn-xs authButtonSubmit">Submit</button>
+    </form>
+  </div>
+  <button class="btn btn-warning panelButton btn-xs pull-right" (click)="Back()">Back</button>
+</div>

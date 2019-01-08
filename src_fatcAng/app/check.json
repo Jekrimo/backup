@@ -1,0 +1,315 @@
+swagger: '2.0'
+info:
+title: "SEI ETC Tardec ROS Registry"
+license:
+name: "Unknown"
+version: 1.1.0
+host: "localhost"
+basePath: "/"
+schemes:
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+/registry/ros/v1/user/id/{id}:
+get:
+tags:
+- "user"
+summary: "Searches for a user by id"
+description: "Searches for a user by id"
+parameters:
+- name: "id"
+in: "path"
+required: true
+description: "Id of the user to find"
+type: "integer"
+responses:
+200:
+description: "Successfully found user"
+schema:
+type: "object"
+items:
+$ref: "#/definitions/User"
+404:
+description: "Could not find user"
+/registry/ros/v1/user/getAllUsers:
+get:
+tags:
+- "user"
+summary: "Get all users"
+description: "Get all users"
+responses:
+200:
+description: "Successfully get all users"
+schema:
+type: "array"
+items:
+$ref: "#/definitions/User"
+404:
+description: "Could not get all users"
+/registry/ros/v1/user/login:
+post:
+tags:
+- "user"
+summary: "Login user by un/pw"
+description: "Login user by un/pw"
+consumes:
+- "multipart/form-data"
+parameters:
+- name: "name"
+in: "formData"
+description: "Name of the user"
+required: true
+type: "string"
+- name: "password"
+in: "formData"
+description: "Password of the user"
+required: true
+type: "string"
+responses:
+200:
+description: "Successfully logged in!"
+schema:
+type: "object"
+items:
+$ref: "#/definitions/User"
+404:
+description: "Could not login, please check username password combination"
+/registry/ros/v1/user/logout:
+post:
+tags:
+- "user"
+summary: "Logout user by id"
+description: "Logout user by id"
+parameters:
+- name: "id"
+in: "header"
+description: "ID of the user"
+type: "integer"
+responses:
+200:
+description: "Successfully logged out!"
+404:
+description: "Could not logout"
+/registry/ros/v1/user/create:
+post:
+tags:
+- "user"
+summary: "Creates a user"
+description: 'create user by username, password and any other info users need'
+consumes:
+- "multipart/form-data"
+parameters:
+- name: "name"
+in: "formData"
+description: "Name of the user to create"
+type: "integer"
+- name: "password"
+description: "Password to use for new user"
+in: "formData"
+type: "string"
+responses:
+200:
+description: "Successfully created user"
+schema:
+type: "object"
+items:
+$ref: "#/definitions/User"
+404:
+description: "Could not create user"
+/registry/ros/v1/user/delete/id/{id}:
+delete:
+tags:
+- "user"
+summary: "Deletes a user"
+description: "Delete user by id"
+parameters:
+- name: "id"
+in: "path"
+required: true
+description: "ID of the user to delete"
+type: "integer"
+responses:
+200:
+description: "Successfully deleted user"
+404:
+description: "Could not delete user"
+/registry/ros/v1/user/update/:
+put:
+tags:
+- "user"
+summary: "Update a user by id"
+description: "Update user by id"
+parameters:
+- in: "body"
+name: "body"
+description: "User object to be updated"
+required: true
+schema:
+$ref: "#/definitions/User"
+responses:
+200:
+description: "Successfully updated user"
+404:
+description: "Could not update user"
+/registry/ros/v1/pkg/getAllPackages:
+get:
+tags:
+- "pkg"
+summary: "Gets all available packages"
+description: "Gets all available packages that have been registered"
+produces:
+- "application/json"
+- "application/xml"
+responses:
+200:
+description: "Successfully got all available packages"
+schema:
+type: "object"
+items:
+$ref: "#/definitions/Package"
+404:
+description: "Unable to get packages"
+/registry/ros/v1/search/pkg/id/{id}:
+get:
+tags:
+- "search"
+summary: "Searches a package by its id"
+description: "Searches a package by its id"
+parameters:
+- name: "id"
+in: "path"
+description: "ID of package"
+required: true
+type: "string"
+responses:
+200:
+description: "Successfully found package by ID (in Elasticsearch format)"
+404:
+description: "ID not found"
+/registry/ros/v1/search/result/id/{id}:
+get:
+tags:
+- "search"
+summary: "Fetches a set of cached search results"
+description: "Fetches a set of cached search results by a cached ID produced from the output of POST /registry/ros/v1/create/search/pkg"
+parameters:
+- name: "id"
+in: "path"
+description: "ID of cached result"
+required: true
+type: "string"
+responses:
+200:
+description: "Successfully found cached search results by ID (in Elasticsearch format)"
+404:
+description: "ID not found"
+/registry/ros/v1/delete/pkg/id/{id}:
+delete:
+tags:
+- "pkg"
+summary: "Deletes a package by its ID"
+description: "Deletes a package by its ID"
+parameters:
+- name: "id"
+in: "path"
+description: "ID of package"
+required: true
+type: "string"
+responses:
+200:
+description: "Successfully deleted the package"
+404:
+description: "ID not found"
+/registry/ros/v1/update/pkg/id/{id}:
+put:
+tags:
+- "pkg"
+summary: "Updates a package given its ID"
+description: "Updates a package given its ID. The package must already exist."
+parameters:
+- name: "id"
+in: "path"
+description: "The ID of the package"
+required: true
+type: "string"
+- name: "body"
+in: "body"
+description: "Elements of the package to be updated"
+required: true
+schema:
+$ref: "#/definitions/Package"
+responses:
+204:
+description: "Successfully updated package"
+404:
+description: "Package not found"
+/registry/ros/v1/create/search/pkg:
+post:
+tags:
+- "search"
+summary: "Creates search results"
+description: "Creates search results that can be recalled later"
+parameters:
+- name: "body"
+in: "body"
+description: "An Elasticsearch query"
+required: true
+schema:
+$ref: 'https://www.elastic.co/guide/en/elasticsearch/reference/current/search.html'
+responses:
+201:
+description: "Successfully updated package"
+400:
+description: "Invalid search query"
+404:
+description: "Package not found"
+/registry/ros/v1/create/pkg:
+post:
+tags:
+- "pkg"
+summary: "Creates a ROS package"
+description: "Creates a ROS package"
+parameters:
+- name: "body"
+in: "body"
+description: "ROS metadata"
+required: true
+schema:
+$ref: "#/definitions/Package"
+responses:
+201:
+description: "Successfully updated package"
+400:
+description: "Invalid or missing metadata"
+definitions:
+User:
+type: "object"
+properties:
+id:
+type: "integer"
+format: "int64"
+username:
+type: "string"
+firstName:
+type: "string"
+lastName:
+type: "string"
+email:
+type: "string"
+password:
+type: "string"
+xml:
+name: "User"
+Package:
+type: "object"
+properties:
+id:
+type: "integer"
+format: "int64"
+metaData:
+type: "object"
+xml:
+name: "Package"

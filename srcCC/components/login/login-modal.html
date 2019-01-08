@@ -1,0 +1,50 @@
+
+<ion-content style="background-color: #1f3a4d">
+
+
+<ion-icon (click)="dismissModal()" name="close" md="md-close" style="font-size: 2.5em; float: right; margin-right: 10px; color: white;" ></ion-icon>
+<ion-row align-items-center>
+  <ion-col col-12 col-sm>
+      <header class="div-header" style=" text-align: center;">
+          <h3 class="div-title" data-text="About Us" style=" color: white;">Please enter your Username and Password</h3>
+ </header>
+        </ion-col>
+</ion-row>
+
+<form [formGroup]="loginForm" style="margin: 0% 5% 0% 5%" >
+<ion-item>
+  <ion-label color="primary">Username</ion-label>
+  <ion-input placeholder="Text Input" class="form-control" formControlName="username" value="admin"></ion-input>
+</ion-item>
+<ion-item style="margin-top: 5%;" >
+    <ion-label color="primary">Password</ion-label>
+    <ion-input type="password" placeholder="Text Input" class="form-control" formControlName="password" value="fatcadmin"></ion-input>
+  </ion-item>
+  <button ion-button style="float: right" style="color:white;text-decoration: none; margin-top: 5%;" type="submit" (click)="loginUser($event)" >Submit
+    </button>
+  </form>
+
+<!-- Don't need success as the link to fatc is alert enough.
+
+  <div style="margin-left: 10px;">
+  <alert
+  type="success"
+  dismissOnTimeout="1500"
+  dismissible="true"
+  (onClosed)="onDismissAlert(alert.id)"
+  *ngFor="let alert of successAlerts$ | async">
+  {{alert.message}}
+</alert>
+</div> -->
+<!-- ERROR ALERT
+  Making div to display correctly in modal. -->
+
+<alert
+  style="color: white; text-align: center;"
+  type="danger"
+  dismissOnTimeout="1500"
+  (onClosed)="onDismissAlert(alert.id)"
+  *ngFor="let alert of errorAlerts$ | async">
+  {{alert.message}}
+</alert>
+</ion-content>

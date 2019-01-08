@@ -1,0 +1,69 @@
+<ion-content style="background-color: #1f3a4d">
+
+<ion-row >
+    <ion-col col-12 col-sm>
+    <ion-icon (click)="dismissModal()" name="close" md="md-close" side="right" style="font-size: 2.5em; float: right;  color: white;" ></ion-icon>
+    </ion-col>
+  </ion-row>
+    <ion-row align-items-center>
+      <ion-col col-12 col-sm>
+          <header class="div-header" style=" text-align: center;">
+              <h3 class="div-title" data-text="About Us" style=" color: white;">Authenticate Target Credentials</h3>
+     </header>
+            </ion-col>
+    </ion-row>
+
+    <div style="margin: 0% 5% 0% 5%" >
+        <header class="div-header" style=" text-align: center;">
+      <h6 style="margin-bottom: 5%; color: white;" >Use the login button to open the collector authentication site in a new tab.</h6>
+        </header>
+    <ion-item>
+      <ion-label color="primary">Target Username</ion-label>
+      <ion-input placeholder="Target Username" class="row-control"  [(ngModel)]="targetUsername"></ion-input>
+    </ion-item>
+    <ion-item style="margin-top: 5%;" >
+        <ion-label color="primary">Target Password</ion-label>
+        <ion-input placeholder="Target Password" class="form-control"  [(ngModel)]="targetPassword"></ion-input>
+      </ion-item>
+        <ion-list style="margin-top: 5%;">
+            <ion-item >
+                <ion-input [value]="authURL" class="form-control" ></ion-input>
+              <button ion-button outline item-end (click)="Navigate()" >login</button>
+            </ion-item>
+          </ion-list>
+
+      <ion-list style="margin-top: 5%;">
+          <ion-item >
+              <ion-input placeholder="Paste authentication key here" [(ngModel)]="authValue" class="form-control"  ></ion-input>
+            <button ion-button outline item-end>?</button>
+          </ion-item>
+        </ion-list>
+
+      <button ion-button style="float: right" style="color:white;text-decoration: none; margin-top: 5%;" type="submit" (click)="CreateCollector($event)" >Authenticate
+        </button>
+      </div>
+
+    <!-- Don't need success as the link to fatc is alert enough.
+
+      <div style="margin-left: 10px;">
+      <alert
+      type="success"
+      dismissOnTimeout="1500"
+      dismissible="true"
+      (onClosed)="onDismissAlert(alert.id)"
+      *ngFor="let alert of successAlerts$ | async">
+      {{alert.message}}
+    </alert>
+    </div> -->
+    <!-- ERROR ALERT
+      Making div to display correctly in modal. -->
+
+    <alert
+      style="color: white; text-align: center;"
+      type="danger"
+      dismissOnTimeout="1500"
+      (onClosed)="onDismissAlert(alert.id)"
+      *ngFor="let alert of errorAlerts$ | async">
+      {{alert.message}}
+    </alert>
+    </ion-content>

@@ -1,0 +1,89 @@
+#loginFormBox {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form-control {
+    margin-top: 10px;
+}
+
+.textWhite {
+  color: white;
+}
+.box {
+    padding: 5rem 5rem 10rem 5rem;
+    margin: 5rem 10rem 0rem 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #254461;
+    border-radius: 10px;
+    max-width: 1415px;
+}
+.saveExit {
+    height: 34px;
+}
+.panelButton {
+    border: 1px solid white;
+    float: none;
+    margin: 2px 5px 0px 0px;
+}
+
+.existingcasesClass {
+    max-height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.newCaseInput {
+    width: 40%;
+}
+.caseName {
+    text-align: center;
+    margin-top: 15px;
+}
+.caseForm {
+    text-align: center;
+    padding-left: 10px;
+}
+
+.caseTitle {
+  margin-bottom: 35px;
+}
+
+.submitNewCase {
+    height: 33px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.panelButton:hover, .panelButton:focus, .panelButton:active, .panelButton.active, .open > .dropdown-toggle.btn-primary {
+    background: #0061a9;
+}
+
+button.btn.btn-warning.form-inline.panelButton.btn-xs.authButtonSubmit {
+  margin-left: 10px;
+  margin-top: 9px;
+}
+
+.questionbtn {
+  margin-left: 10px;
+}
+
+.moveOverCenter {
+  float: none;
+    margin-left: 20%;
+    margin-right: auto;
+}
+
+.downloadlink {
+  color: blue;
+
+}
+
+.btn {
+    background: #0f1e33;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #254461;
+  color: white;
+}

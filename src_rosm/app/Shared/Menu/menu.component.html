@@ -1,0 +1,87 @@
+<router-outlet></router-outlet>
+
+<a href="/"> <img style="height: 75px; display: inline-block;" src="assets/img/rosm-logo-full.png" alt="Ros-M Logo"></a>
+
+<div *ngIf="searchDisabled" class="ui-inputgroup" style="  float: right; margin-top: 40px;">
+  <input type="text" pInputText placeholder="Keyword">
+  <button pButton type="button" label="Search" ></button>
+</div>
+
+
+<div class="wrapper menu-wrap">
+
+  <div class="center">
+    <div *ngIf="!registryTabActive"  >
+      <div class="notActiveTab">
+    <a routerLink="/registry-homepage" routerLinkActive="active"  style="text-decoration: none; ">
+      <img style="height: 80px;" src="assets/img/rosm-book-icon.png" alt="Ros-M Logo">
+      <h1 class="txt-white">Registry</h1>
+    </a>
+      </div>
+  </div>
+    <div *ngIf="registryTabActive">
+      <div class="activeTab">
+      <a routerLink="/registry-homepage" routerLinkActive="active"  style="text-decoration: none;">
+        <img style="height: 80px;" src="assets/img/rosm-book-icon.png" alt="Ros-M Logo">
+        <h1 class="txt-white" >Registry</h1>
+      </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="center">
+    <div *ngIf="!repoTabActive">
+      <div class="notActiveTab">
+    <a routerLink="/repository-homepage" routerLinkActive="active"  style="text-decoration: none;">
+    <img style="height: 80px;" src="assets/img/rosm-server-icon.png" alt="Ros-M Logo">
+    <h1 class="txt-white">Repository</h1>
+    </a>
+      </div>
+  </div>
+    <div *ngIf="repoTabActive">
+      <div class="activeTab">
+      <a routerLink="/repository-homepage"  routerLinkActive="active" style="text-decoration: none;">
+        <img style="height: 80px;" src="assets/img/rosm-server-icon.png" alt="Ros-M Logo">
+        <h1 class="txt-white" >Repository</h1>
+      </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="center">
+    <div *ngIf="!docsTabActive">
+      <div class="notActiveTab">
+    <a href="/" target="_blank"  style="text-decoration: none;">
+    <img style="height: 80px;" src="assets/img/rosm-folder-icon.png" alt="Ros-M Logo">
+      <h1 class="txt-white">Documentation</h1></a>
+      </div>
+    </div>
+    <div *ngIf="docsTabActive">
+      <div class="activeTab">
+      <a href="/" target="_blank"  style="text-decoration: none;">
+        <img style="height: 80px;" src="assets/img/rosm-folder-icon_active.png" alt="Ros-M Logo">
+        <h1 class="txt-white" style="color: #fc5920;">Documentation</h1></a>
+      </div>
+    </div>
+</div>
+
+  <div class="center">
+    <div *ngIf="!toolsTabActive">
+      <div class="notActiveTab">
+    <a href="/" target="_blank"  style="text-decoration: none;">
+    <img style="height: 80px;" src="assets/img/rosm-toolbox-icon.png" alt="Ros-M Logo">
+    <h1 class="txt-white" >Tools</h1>
+    </a>
+      </div>
+  </div>
+    <div *ngIf="toolsTabActive">
+      <div class="activeTab">
+      <a href="/" target="_blank"  style="text-decoration: none;">
+        <img style="height: 80px;" src="assets/img/rosm-toolbox-icon_active.png" alt="Ros-M Logo">
+        <h1 class="txt-white" style="color: #fc5920;">Tools</h1>
+      </a>
+    </div>
+    </div>
+  </div>
+
+</div>

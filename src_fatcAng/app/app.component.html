@@ -1,0 +1,20 @@
+<alert
+  type="success"
+  dismissOnTimeout="1500"
+  dismissible="true"
+  (onClosed)="onDismissAlert(alert.id)"
+  *ngFor="let alert of successAlerts$ | async">
+  {{alert.message}}
+</alert>
+
+<!-- ERROR ALERTS -->
+
+<alert
+  type="danger"
+  dismissOnTimeout="1500"
+  dismissible="true"
+  (onClosed)="onDismissAlert(alert.id)"
+  *ngFor="let alert of errorAlerts$ | async">
+  {{alert.message}}
+</alert>
+<router-outlet></router-outlet>

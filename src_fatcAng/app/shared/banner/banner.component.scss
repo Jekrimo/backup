@@ -1,0 +1,45 @@
+#banner {
+  width: 100%;
+  height: 65px;
+  margin-top: -30px;
+  margin-bottom: 30px;
+  background-color: #254461;
+}
+
+ul li{
+  list-style-type: none;
+}
+li {
+    cursor: pointer; cursor: hand;
+}
+
+#titleText {
+  padding-top: 15px;
+  color: white
+}
+
+#titleText a{
+  text-decoration: none;
+  font-weight: bold;
+  color: white
+}
+
+.textWhite {
+  margin-top: 15px;
+  margin-right: 10px;
+  color: white;
+}
+.logoutUser{
+  margin-top: -40px;
+  margin-right: 75px;
+}
+.inline {
+  display: inline-block;
+}
+.navDropDown {
+  position:  fixed;
+  height: 120px;
+  width: 120px;
+  background-color: #254461;
+  border-radius: 5px;
+}

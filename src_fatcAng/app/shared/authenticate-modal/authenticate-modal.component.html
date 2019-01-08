@@ -1,0 +1,46 @@
+<div class="modal fade" bsModal #authModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header" id="banner">
+        <h4 class="modal-title pull-left" id="titleText">Authenticate Target Credentials</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="HideAuthModal()">&times;</button>
+      </div>
+
+      <div class="modal-body" id="modalRect">
+        <span>Use the login button to open the collector authentication site in a new tab.</span>
+
+        <div class="form-inline">
+          <label class="login-label" for="loginUsername">Username</label>
+          <input id="loginUsername" class="login-code form-control" placeholder="target username" [(ngModel)]="targetUsername" autofocus
+          />
+        </div>
+
+        <div class="form-inline">
+          <label class="login-label" for="loginPassword">Password</label>
+          <input id="loginPassword" class="login-code form-control" placeholder="target password" [(ngModel)]="targetPassword" />
+        </div>
+
+        <div class="form-inline">
+          <input class="code form-control" type="text" readonly="readonly" [value]="authURL" />
+
+          <button class="authButton" class="btn btn-primary btn-xs sharedAuthButtons" (click)="Navigate()" tabindex="-1">Login</button>
+        </div>
+        <div class="form-inline">
+          <input class="code form-control" type="text" [(ngModel)]="authValue" placeholder="Paste authentication key here" />
+
+          <button type="button" class="btn btn-primary panelButton btn-xs sharedAuthButtons questionbtn" tabindex="-1" tooltip="enter the authentication code returned from the target website here">?
+          </button>
+        </div>
+
+        <div class="tooltip-wrapper" [tooltip]="getAuthTooltip()" [placement]="'right'">
+          <button type="button" class="btn btn-primary panelButton btn-xs pull-right authButton sharedAuthButtons" (click)="SaveAuthenticateCode()"
+            [disabled]="isAuthButtonDisabled()">
+              Authenticate
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div id="banner" (mouseleave)="navDropDown('out')">
+    <h2 id="titleText" class="text-center"><a href="#/home">Forensic Aquisition Tool for Cloud (FAT-C)</a></h2>
+    <div class="logoutUser pull-right" >
+      <div *ngIf="!logoutBool">
+        <ul>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"  (mouseenter)="navDropDown('in')">
+        <h6 class="textWhite inline" >Hello {{displayCurrentUsertype.firstName}} {{displayCurrentUsertype.lastName}}</h6>
+        <span *ngIf="navDropDownBool" class="glyphicon glyphicon-chevron-down" style="color:white" ></span>
+        <span *ngIf="!navDropDownBool" class="glyphicon glyphicon-chevron-left" style="color:white" ></span>
+        </a>
+        <ul class="navDropDown" *ngIf="navDropDownBool" (mouseleave)="navDropDown('out')">
+          <li class="textWhite"><a (click)="userLink()" class="textWhite">Profile</a></li>
+          <li class="textWhite"><a href="https://fatc.araswat.com/docs/" target="_blank" class="textWhite">Docs</a></li>
+          <li (click)="logOutUser()" class="textWhite"><a href="#" class="textWhite">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+      </div>
+
+   </div>
+</div>

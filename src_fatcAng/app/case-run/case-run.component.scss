@@ -1,0 +1,91 @@
+.progressContainer {
+  width: 100%;
+  display: inline;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  position: relative;
+}
+
+.widthFix{
+  width: 100%;
+}
+
+.box {
+  max-height: 950px;
+  max-width: 1435px;
+  overflow-y: scroll;
+}
+
+.finishedCollector {
+  margin-right: -33px;
+  margin-top: -13px;
+  display: inline-block;
+
+}
+
+div.progress {
+  max-width: 1300px;
+}
+
+span.estimationMessages{
+  margin-right: 30px;
+}
+
+.glyphicon {
+  font-family: 'Glyphicons Halflings' !important;
+}
+
+.glyphicon-check {
+  margin-top: 62px;
+  margin-left: -40px;
+  position: absolute;
+  font-size: 1.5em;
+  font-family: 'Glyphicons Halflings' !important;
+}
+
+button.btn.btn-warning.panelButton.pull-right.saveExit {
+  margin-left: 80%;
+  margin-top: -50px;
+}
+
+button.btn.btn-danger.panelButton.btn-xs {
+  background-color: #a81515;
+  margin-left: 10px;
+}
+
+.log-container {
+  max-height: 300px;
+  // hard-set width. otherwise it will flash / wiggle with log lengths
+  max-width: 950px;
+  min-height: 100px;
+  white-space: nowrap;
+  overflow: auto;
+}
+
+.log-container > span {
+  color: white;
+}
+
+.caseTitle {
+  color: white;
+}
+
+$logtextsize: 12px;
+
+.logtextline-info {
+  color: #ededed;
+  display: block;
+  font-size: $logtextsize;
+}
+
+.logtextline-warn {
+  color: darkorange;
+  display: block;
+  font-size: $logtextsize;
+}
+
+.logtextline-warn {
+  color: darkred;
+  display: block;
+  font-size: $logtextsize;
+}

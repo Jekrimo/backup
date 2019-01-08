@@ -1,0 +1,45 @@
+<div>
+  <app-banner></app-banner>
+  <div class="box">
+    <div *ngIf="caseHistory">
+      <h4 class="textWhite">Collection History</h4>
+      <div class="collectorRect">
+        <div class="row">
+          <div class="col-sm-12 acqSummary">
+            <table class="table table-responsive">
+              <thead>
+              <tr>
+                <th class="textWhite">Collector Name</th>
+                <th class="textWhite">Type</th>
+                <th class="textWhite">Started</th>
+                <th class="textWhite">Finished</th>
+                <th class="textWhite">Size</th>
+                <th class="textWhite">Download</th>
+                <th class="textWhite">Delete</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let h of caseHistory">
+                <td>{{h.collectorConfig.collectorAlias}}</td>
+                <td>{{h.collectorConfig.collectorTypeName}}</td>
+                <td>{{niceTime(h.startedAt)}}</td>
+                <td>{{niceTime(h.finishedAt)}}</td>
+                <td>{{niceSize(h.sizeBytes)}}</td>
+                <td><a [href]="downloadLink(h)">Download</a></td>
+                <td>
+                  <button (click)="delete(h)" class="btn btn-danger btn-sm" style="background-color: red; height: 25px; padding-top: 2px;">Delete</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!(caseHistory)">
+      Loading case history...
+    </div>
+    <button (click)="backToCaseConfig()" class=" btn btn-warning panelButton">Back to case configuration</button>
+  </div>
+</div>

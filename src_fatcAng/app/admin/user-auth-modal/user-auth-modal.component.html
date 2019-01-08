@@ -1,0 +1,35 @@
+<div class="modal fade" bsModal #authModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog"
+     aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-md modal-editUser">
+    <div class="modal-content modal-editUser">
+      <div class="modal-header" id="banner">
+        <h4 class="modal-title pull-left" >User login info</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="HideAuthModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalRect">
+        <div class="moverLeft">
+          <div class="row">
+            <h4 class="modal-title pull-left" >Please Email User <span class="highlightImportant">{{addEditUser.userName}}</span>
+              at the email address: <span class="highlightImportant">{{addEditUser.email}}</span></h4>
+          </div>
+          <div class="row">
+            <h4 class="modal-title pull-left" >User Name: <span class="highlightImportant">{{addEditUser.userName}}</span>
+            </h4>
+          </div>
+          <div class="row">
+            <h4 class="modal-title pull-left" >User Temporary Password: <span class="highlightImportant">{{addEditUser.tempPass}}</span>
+            </h4>
+          </div>
+          <div class="row">
+            <h4 class="modal-title pull-left" >User Login Code: <span class="highlightImportant">{{addEditUser.authCode}}</span>
+            </h4>
+          </div>
+        </div>
+        <div class="row">
+          <button (click)="HideAuthModal()" class="btn btn-primary btn-xs pull-right saveUserbutton">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
